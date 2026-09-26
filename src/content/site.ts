@@ -59,7 +59,7 @@ export interface SiteContent {
     full: string;
     short: string;
   };
-  /** Координаты ПТО. Взяты по улице Южная на Яндекс Картах, точку здания нужно уточнить. */
+  /** Координаты ПТО: дом 12 на ул. Южная по Яндекс Картам. */
   geo: { lat: number; lon: number };
   categories: VehicleCategory[];
   schedule: WorkSchedule;
@@ -89,7 +89,7 @@ export const siteContent: SiteContent = {
     full: "607340, Нижегородская область, Вознесенский район, Вознесенское, ул. Южная, д. 12",
     short: "с. Вознесенское, ул. Южная, д. 12",
   },
-  geo: { lat: 54.885228, lon: 42.771117 },
+  geo: { lat: 54.886036, lon: 42.776651 },
   categories: [
     {
       code: "L",
