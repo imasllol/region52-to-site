@@ -10,15 +10,22 @@ import { ScheduleSection } from "@/components/ScheduleSection";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { WorkStatusIndicator } from "@/components/WorkStatusIndicator";
+import { BookingButton } from "@/features/booking/BookingButton";
+import { BookingProvider } from "@/features/booking/BookingProvider";
 
 export default function HomePage() {
   return (
-    <>
-      <SiteHeader />
+    <BookingProvider>
+      <SiteHeader action={<BookingButton variant="compact" />} />
       <main>
-        <HeroSection status={<WorkStatusIndicator />} />
+        <HeroSection
+          status={<WorkStatusIndicator />}
+          primaryAction={<BookingButton variant="primary" />}
+        />
         <OperatorDetailsSection />
-        <AccreditationSection />
+        <AccreditationSection
+          renderAction={(code) => <BookingButton variant="card" category={code} />}
+        />
         <PriceSection />
 
         <section id="documents" aria-labelledby="documents-title" className="section pt-0 md:pt-0">
@@ -43,7 +50,13 @@ export default function HomePage() {
           </div>
         </section>
       </main>
-      <SiteFooter />
-    </>
+      <SiteFooter
+        links={
+          <a href="/privacy" className="underline-offset-4 hover:text-accent hover:underline">
+            Политика конфиденциальности
+          </a>
+        }
+      />
+    </BookingProvider>
   );
 }
