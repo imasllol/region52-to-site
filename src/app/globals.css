@@ -54,6 +54,18 @@ select:focus-visible {
   outline-offset: 3px;
 }
 
+/* Окно онлайн-записи */
+.booking-dialog::backdrop {
+  background-color: rgb(0 0 0 / 0.72);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.booking-dialog select option {
+  background-color: var(--color-surface);
+  color: var(--color-ink);
+}
+
 @layer components {
   .container-site {
     width: 100%;
