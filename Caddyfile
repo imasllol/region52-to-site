@@ -1,0 +1,4 @@
+region52-to.ru, www.region52-to.ru {
+	encode zstd gzip
+	reverse_proxy web:3000
+}
