@@ -165,16 +165,17 @@ export const siteContent: SiteContent = {
       { weekday: 7, label: "Воскресенье", short: "Вс", onLabel: "в воскресенье", open: null, close: null },
     ],
   },
+  // Файлы лежат в public/docs под исходными именами от владельца ПТО.
   legalDocuments: [
-    { title: "Федеральный закон о техническом осмотре", href: "/docs/zakon-o-to.pdf" },
+    { title: "Федеральный закон о техническом осмотре", href: "/docs/zakon_o_to.docx" },
     {
       title: "Правила проведения технического осмотра транспортных средств",
-      href: "/docs/pravila-provedeniya-to.pdf",
+      href: "/docs/pravila_provedenia.docx",
     },
-    { title: "Типовой договор", href: "/docs/tipovoy-dogovor.pdf" },
-    { title: "Постановление проведения ТО М2, М3", href: "/docs/postanovlenie-to-m2-m3.pdf" },
+    { title: "Типовой договор", href: "/docs/dogovor%20(1).doc" },
+    { title: "Постановление проведения ТО М2, М3", href: "/docs/prikaz.pdf" },
   ],
-  priceDocumentHref: "/docs/stoimost-to.pdf",
+  priceDocumentHref: "/docs/tarif.pdf",
   requiredDocuments: [
     "Документ, удостоверяющий личность",
     "Свидетельство о регистрации транспортного средства или паспорт транспортного средства",
