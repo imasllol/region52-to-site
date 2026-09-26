@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { siteContent } from "@/content/site";
+import { MagneticButton } from "@/features/motion/MagneticButton";
 import { MapPinIcon, NavigationIcon } from "./Icons";
 
 type MapState = "idle" | "loading" | "loaded" | "failed";
@@ -58,15 +59,12 @@ export function AddressSection() {
             <p className="mt-1 font-semibold leading-snug">{address.full}</p>
           </div>
         </div>
-        <a
-          href={routeHref}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn btn-primary mt-6 w-full sm:w-auto"
-        >
-          <NavigationIcon className="size-5" />
-          Построить маршрут
-        </a>
+        <MagneticButton className="mt-6 grid sm:inline-grid">
+          <a href={routeHref} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+            <NavigationIcon className="size-5" />
+            Построить маршрут
+          </a>
+        </MagneticButton>
       </div>
 
       {state !== "failed" ? (

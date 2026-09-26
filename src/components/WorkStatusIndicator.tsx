@@ -3,11 +3,19 @@
 import { describeWorkStatus } from "@/content/work-status";
 import { useWorkStatus } from "@/hooks/useWorkStatus";
 
+/** StatusPulse: зеленая пульсирующая точка, когда открыто, красная неподвижная, когда закрыто. */
 export function StatusDot({ isOpen }: { isOpen: boolean }) {
   return (
-    <span
-      className={`relative inline-flex size-2.5 shrink-0 rounded-full ${isOpen ? "bg-success" : "bg-danger"}`}
-    />
+    <span className="relative inline-flex size-2.5 shrink-0">
+      {isOpen ? (
+        <span className="absolute inline-flex size-full rounded-full bg-success opacity-0 motion-safe:animate-ping motion-safe:opacity-75" />
+      ) : null}
+      <span
+        className={`relative inline-flex size-2.5 rounded-full ${
+          isOpen ? "bg-success shadow-[0_0_10px_rgba(34,197,94,0.8)]" : "bg-danger"
+        }`}
+      />
+    </span>
   );
 }
 
@@ -48,7 +56,7 @@ export function WorkStatusIndicator({ variant = "compact" }: WorkStatusIndicator
   return (
     <span
       role="status"
-      className="inline-flex items-center gap-2 rounded-full border border-line bg-white/5 px-3 py-1.5 text-xs font-semibold"
+      className="inline-flex items-center gap-2 rounded-full border border-line bg-white/5 px-3 py-1.5 text-xs font-semibold backdrop-blur"
     >
       <StatusDot isOpen={status.isOpen} />
       <span>{title}</span>

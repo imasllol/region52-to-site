@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import { Manrope, Unbounded } from "next/font/google";
+import { MotionCapabilitiesProvider } from "@/features/motion/MotionCapabilities";
+import { SmoothScrollProvider } from "@/features/motion/SmoothScrollProvider";
 import "./globals.css";
 
 const unbounded = Unbounded({
@@ -29,7 +31,11 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ru" className={`${unbounded.variable} ${manrope.variable}`}>
-      <body>{children}</body>
+      <body>
+        <MotionCapabilitiesProvider>
+          <SmoothScrollProvider>{children}</SmoothScrollProvider>
+        </MotionCapabilitiesProvider>
+      </body>
     </html>
   );
 }

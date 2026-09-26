@@ -12,41 +12,77 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { WorkStatusIndicator } from "@/components/WorkStatusIndicator";
 import { BookingButton } from "@/features/booking/BookingButton";
 import { BookingProvider } from "@/features/booking/BookingProvider";
+import { HeroBackground } from "@/features/hero3d/HeroBackground";
+import { AmbientBackground } from "@/features/motion/AmbientBackground";
+import { AnimatedHeroTitle } from "@/features/motion/AnimatedHeroTitle";
+import { MagneticButton } from "@/features/motion/MagneticButton";
+import { Reveal } from "@/features/motion/Reveal";
+import { ScrollProgressBar } from "@/features/motion/ScrollProgressBar";
 
 export default function HomePage() {
   return (
     <BookingProvider>
-      <SiteHeader action={<BookingButton variant="compact" />} />
+      <AmbientBackground />
+      <SiteHeader
+        action={
+          <MagneticButton className="grid">
+            <BookingButton variant="compact" />
+          </MagneticButton>
+        }
+        progress={<ScrollProgressBar />}
+      />
       <main>
         <HeroSection
+          background={<HeroBackground />}
+          title={<AnimatedHeroTitle />}
           status={<WorkStatusIndicator />}
-          primaryAction={<BookingButton variant="primary" />}
+          primaryAction={
+            <MagneticButton>
+              <BookingButton variant="primary" />
+            </MagneticButton>
+          }
         />
-        <OperatorDetailsSection />
+        <Reveal>
+          <OperatorDetailsSection />
+        </Reveal>
         <AccreditationSection
           renderAction={(code) => <BookingButton variant="card" category={code} />}
         />
-        <PriceSection />
+        <Reveal>
+          <PriceSection />
+        </Reveal>
 
         <section id="documents" aria-labelledby="documents-title" className="section pt-0 md:pt-0">
           <div className="container-site">
-            <p className="eyebrow">Документы</p>
-            <h2 id="documents-title" className="section-title mt-4">
-              Что нужно знать перед техосмотром
-            </h2>
+            <Reveal>
+              <p className="eyebrow">Документы</p>
+              <h2 id="documents-title" className="section-title mt-4">
+                Что нужно знать перед техосмотром
+              </h2>
+            </Reveal>
             <div className="mt-12 grid gap-10 lg:grid-cols-2">
-              <RequiredDocumentsSection />
-              <LegalDocumentsSection />
+              <Reveal>
+                <RequiredDocumentsSection />
+              </Reveal>
+              <Reveal delay={0.1}>
+                <LegalDocumentsSection />
+              </Reveal>
             </div>
           </div>
         </section>
 
-        <ScheduleSection />
+        <Reveal>
+          <ScheduleSection />
+        </Reveal>
 
         <section id="contacts" aria-labelledby="contacts-title" className="section">
           <div className="container-site grid gap-10 lg:grid-cols-2 lg:items-start">
-            <ContactsSection />
-            <AddressSection />
+            <Reveal>
+              <ContactsSection />
+            </Reveal>
+            <Reveal delay={0.1}>
+              <AddressSection />
+            </Reveal>
           </div>
         </section>
       </main>

@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { siteContent } from "@/content/site";
+import { MagneticButton } from "@/features/motion/MagneticButton";
 import { MapPinIcon, PhoneIcon, ShieldCheckIcon } from "./Icons";
 
 interface HeroSectionProps {
@@ -29,7 +30,7 @@ export function HeroTitle() {
   return (
     <h1 className="font-display font-bold tracking-tight">
       <span className="block text-[clamp(2.25rem,7vw,5.25rem)] leading-[1.02]">{lead}</span>{" "}
-      <span className="mt-3 block bg-gradient-to-r from-accent to-[#ffb38a] bg-clip-text text-[clamp(1.25rem,3.2vw,2.25rem)] leading-tight text-transparent">
+      <span className="mt-3 block text-[clamp(1.25rem,3.2vw,2.25rem)] leading-tight text-accent">
         {ownerName}
       </span>
     </h1>
@@ -52,9 +53,9 @@ export function HeroSection({ primaryAction, background, status, title }: HeroSe
       </div>
 
       <div className="container-site">
-        <div className="max-w-3xl">
+        <div className="max-w-3xl lg:max-w-2xl xl:max-w-3xl">
           <div className="flex flex-wrap items-center gap-3">
-            <span className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent-soft px-3 py-1.5 text-xs font-semibold text-accent">
+            <span className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent-soft px-3 py-1.5 text-xs font-semibold text-accent backdrop-blur">
               <ShieldCheckIcon className="size-4" />
               Реестр операторов техосмотра РСА: {registryNumber}
             </span>
@@ -70,17 +71,19 @@ export function HeroSection({ primaryAction, background, status, title }: HeroSe
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             {primaryAction}
-            <a
-              href={`tel:${phone.tel}`}
-              className={`btn ${primaryAction ? "btn-ghost" : "btn-primary"} text-base`}
-            >
-              <PhoneIcon className="size-5" />
-              Позвонить
-            </a>
+            <MagneticButton>
+              <a
+                href={`tel:${phone.tel}`}
+                className={`btn ${primaryAction ? "btn-ghost" : "btn-primary"} text-base`}
+              >
+                <PhoneIcon className="size-5" />
+                Позвонить
+              </a>
+            </MagneticButton>
           </div>
 
           <div className="mt-10 grid gap-3 sm:grid-cols-2">
-            <p className="card flex items-start gap-3 p-4 text-sm leading-relaxed">
+            <p className="card flex items-start gap-3 bg-surface/80 p-4 text-sm leading-relaxed backdrop-blur">
               <PhoneIcon className="mt-0.5 size-5 shrink-0 text-accent" />
               <span>
                 {busNotice}:{" "}
@@ -89,7 +92,7 @@ export function HeroSection({ primaryAction, background, status, title }: HeroSe
                 </a>
               </span>
             </p>
-            <p className="card flex items-start gap-3 p-4 text-sm leading-relaxed">
+            <p className="card flex items-start gap-3 bg-surface/80 p-4 text-sm leading-relaxed backdrop-blur">
               <MapPinIcon className="mt-0.5 size-5 shrink-0 text-accent" />
               <span>
                 <span className="block text-muted">Адрес ПТО</span>
