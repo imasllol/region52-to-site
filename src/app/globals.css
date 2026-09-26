@@ -2,7 +2,7 @@
 
 /* Визуальная тема (ThemeTokens, блупринт «Система анимаций») */
 @theme {
-  --color-base: #0a0a0c;
+  --color-night: #0a0a0c;
   --color-surface: #141418;
   --color-surface-2: #1c1c22;
   --color-line: rgb(255 255 255 / 0.08);
@@ -21,12 +21,18 @@
 }
 
 html {
-  background-color: var(--color-base);
+  background-color: var(--color-night);
   color: var(--color-ink);
   font-family: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
   scroll-padding-top: 5.5rem;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 body {
@@ -37,7 +43,7 @@ body {
 
 ::selection {
   background-color: var(--color-accent);
-  color: var(--color-base);
+  color: var(--color-night);
 }
 
 a:focus-visible,
@@ -82,7 +88,7 @@ select:focus-visible {
 
   .btn-primary {
     background-color: var(--color-accent);
-    color: var(--color-base);
+    color: var(--color-night);
   }
 
   .btn-primary:hover {
@@ -133,5 +139,13 @@ select:focus-visible {
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--color-accent);
+  }
+
+  .eyebrow::before {
+    content: "";
+    width: 1.5rem;
+    height: 2px;
+    border-radius: 2px;
+    background-color: var(--color-accent);
   }
 }
